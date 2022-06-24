@@ -1,3 +1,34 @@
+@extends('layouts.guest',['title'=>'منصة بريد | تسجيل الدخول'])
+
+@section('body')
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-5 col-12 p-md-3 p-4">
+                <img class="img-fluid d-block  mx-auto my-3" width="50%" src="{{asset('images/bareed-logo.png')}}" alt="bareed-logo">
+                <p class="text-center sans-font grey-text">Powered By : <b>BrAiN</b></p>
+                <div class="grey-border radius-80 p-5">
+                   <form method="POST" action="{{ route('login') }}">
+                    <div class="form-group text-right my-3">
+                        <label for="email">اسم المستخدم : </label>
+                        <input id="email" class="form-control radius-20" type="text" name="email">
+                    </div>
+                    <div class="form-group text-right  my-3">
+                        <label for="password">اسم المستخدم : </label>
+                        <input id="password" class="form-control radius-20" type="password" name="password">
+                    </div>
+                    <button class="btn white-text d-block  w-100 green-bg radius-20 mt-5 mb-3" type="submit">تسجيل الدخول</button>
+                    <a class="btn  white-text  d-block w-100 fb-bg radius-20 my-3" href="{{ url('auth/facebook') }}"><span class="mx-2 fa fa-facebook-square"></span>تسجيل الدخول بواسطة فيسبوك</a>
+
+
+                    </form>
+             </div>
+             <p class="sans-font text-center "><small>Develped By : <a class="non-anchor" href="">Hussam Hammad</a> | <a class="non-anchor" href="https://github.com/Ruba559">Ruba Abd Albaki</a></small></p>
+        </div>
+    </div>
+</div>
+@endsection
+{{--
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -60,4 +91,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}

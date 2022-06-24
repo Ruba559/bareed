@@ -1,0 +1,53 @@
+/* fonts  */
+html,body{
+    font-family: Cairo;
+}
+.sans-font{
+    font-family: Segoe UI;
+}
+.non-anchor{
+    text-decoration: none !important;
+}
+/* colors  */
+
+.white-text{
+    color: white;
+}
+.grey-text{
+    color: #777777;
+}
+.blue-text{
+    color: #41A5F3;
+}
+.green-text{
+    color: #12D1B7;
+}
+
+/* backgrounds  */
+
+.white-bg{
+    background-color: white;
+}
+.grey-bg{
+    background-color: #777777;
+}
+.blue-bg{
+    background-color: #41A5F3;
+}
+.green-bg{
+    background-color: #12D1B7;
+}
+.fb-bg{
+    background-color: #4267B2;
+}
+
+
+/* borders*/
+.grey-border{
+    border: thin rgba(202, 202, 202, 0.541) solid;
+}
+.radius-80{
+    border-radius: 50px;
+}.radius-20{
+    border-radius: 10px;
+}
