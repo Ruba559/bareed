@@ -2,8 +2,23 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Facebook Automation Services">
+    <meta name="author" content="Brain">
+
+    <!-- OG Meta Tags -->
+	<meta property="og:site_name" content="Bareed" /> <!-- website name -->
+	<meta property="og:site" content="www.bareed.brain.sy" /> <!-- website link -->
+	<meta property="og:title" content="{{isset($title) ? $title : 'Bareed'}}"/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="{{isset($description) ? $title : 'Best Facebook Automation Services'}}" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="{{asset('images/bareed-logo.png')}}" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="{{URL::current()}}" /> <!-- where do you want your post to link to -->
+	<meta name="twitter:card" content="{{asset('images/bareed-logo.png')}}"> <!-- to have large image post format in Twitter -->
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         <title>{{isset($title) ? $title : 'Bareed'}}</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <!-- Styles -->

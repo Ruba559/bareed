@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-5 col-12 p-md-3 p-4">
-                <img class="img-fluid d-block  mx-auto my-3" width="50%" src="{{asset('images/bareed-logo.png')}}" alt="bareed-logo">
+                <img class="img-fluid d-block  mx-auto my-3" width="50%" src="{{asset('images/logo.gif')}}" alt="bareed-logo">
                 <p class="text-center sans-font grey-text">Powered By : <b>BrAiN</b></p>
                 <div class="grey-border radius-80 p-5">
                    <form method="POST" action="{{ route('login') }}">
