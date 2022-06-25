@@ -9,12 +9,23 @@
                 <p class="text-center sans-font grey-text">Powered By : <b>BrAiN</b></p>
                 <div class="grey-border radius-80 p-5">
                    <form method="POST" action="{{ route('login') }}">
+
+                    @if($errors->any())
+                    <div class="alert alert-warning" role="alert">
+                       @foreach ($errors->all() as $item)
+                       <p>
+                        {{$item}}
+                    </p>
+                       @endforeach
+                    </div>
+                    @endif
+                    @csrf
                     <div class="form-group text-right my-3">
-                        <label for="email">اسم المستخدم : </label>
+                        <label for="email">اسم المستخدم  </label>
                         <input id="email" class="form-control radius-20" type="text" name="email">
                     </div>
                     <div class="form-group text-right  my-3">
-                        <label for="password">اسم المستخدم : </label>
+                        <label for="password">كلمة المرور  </label>
                         <input id="password" class="form-control radius-20" type="password" name="password">
                     </div>
                     <button class="btn white-text d-block  w-100 green-bg radius-20 mt-5 mb-3" type="submit">تسجيل الدخول</button>
