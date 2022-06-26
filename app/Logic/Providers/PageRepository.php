@@ -17,7 +17,7 @@ class PageRepository
     {
         $this->facebook = new Facebook([
             'app_id' => '507577797823762',
-            'app_secret' => '2a15bed8a0302c84f5f3294c0d4b35e2',
+            'app_secret' => '55caeae805d2e41c83bd6d1e4a050307',
             'default_graph_version' => 'v14.0'
         ]);
     }

@@ -3,15 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/logout',[DashboardController::class, 'Logout']);
+Route::get('/delete_account',[DashboardController::class, 'deleteAccount']);
 
 require __DIR__.'/auth.php';
 
@@ -32,7 +33,7 @@ Route::get('/terms', function () {
 
 Route::get('/pages', [PageController::class, 'index']);
 Route::post('disable', [PageController::class, 'disable'])->name('disable_bot');
-Route::get('enable/{page_id}/{token}', [PageController::class, 'enable']);
+Route::post('enable', [PageController::class, 'enable'])->name('enable_bot');
 
 Route::get('/get_posts/{page_id}/{token}', [PageController::class, 'getPosts']);
 

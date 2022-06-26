@@ -1,7 +1,7 @@
 
 <div class="row bg-light justify-content-center align-items-center radius-80 mb-3 page-row " >
     <div class="col-md-2 col-12 ">
-        <img class="rounded-circle" src="$page->image" alt="{{$page->name}}">
+        <img class="rounded-circle" src="{{$page->image}}" alt="{{$page->name}}">
     </div>
     <div class="col-md-6 col-12">
         <div class="d-block  caption">
@@ -14,7 +14,7 @@
 
 
         @if ($page->status==0)
-        <a class="btn mx-auto blue-bg  radius-20  white-text">تمكين</a>
+
         <form action="{{route('enable_bot')}}" method="post">
             @csrf
             <input type="hidden" name="page_id" value="{{$page->page_id}}">

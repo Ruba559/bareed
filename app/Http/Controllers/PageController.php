@@ -28,13 +28,14 @@ class PageController extends Controller
     }
 
 
-    public function enable($page_id , $token)
+    public function enable(Request $request)
     {
-        $enable_page = $this->facebook->enable_bot($page_id ,$token);
+     
+        $enable_page = $this->facebook->enable_bot($request->page_id ,$request->token);
     
        if($enable_page['success'] == 'true')
        {
-         $page = Page::where('page_id', $page_id)->first();
+         $page = Page::where('page_id', $request->page_id)->first();
 
         if($page){
 
@@ -43,7 +44,7 @@ class PageController extends Controller
           $page->save();
        }
       }
-       return redirect('pages');
+       return redirect('/dashboard');
 
     }
 
@@ -63,7 +64,7 @@ class PageController extends Controller
           $page->save();
        }
       }
-       return redirect('pages');
+       return redirect('/dashboard');
 
     }
 
@@ -78,14 +79,7 @@ class PageController extends Controller
     }
 
 
-    public function getPosts($page_id , $token)
-    {
-        $enable_page = $this->facebook->getPosts($page_id ,$token);
-    
-      dd($enable_page);
-       return redirect('pages');
 
-    }
 
 
 }

@@ -195,12 +195,14 @@ html,body{
 .page-row img{
     width: 40px;
 }
-.page-row .caption{
+.page-row .caption p{
     text-align: right;
     float: inline-start;
-    margin-right: auto;
+    margin-left: auto;
 }
-
+.page-row .btn{
+    font-size: small;
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -215,8 +217,9 @@ html,body{
     .page-row img{
         width: 50px;
     }
-    .page-row .caption{
-        text-align: center;
+    .page-row .caption p{
+        text-align: right;
+
     }
     .page-row .caption{
         font-size: medium;
@@ -237,7 +240,7 @@ html,body{
     .page-row img{
         max-width:50px !important;
     }
-    .page-row .caption{
+    .page-row .caption p{
         text-align: center;
     }
 }

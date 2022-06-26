@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Logic\Providers\UserRepository;
 use App\Models\User;
 use App\Models\Page;
+use App\Models\UserAccounts;
 use Validator;
 use Exception;
 use Auth;
@@ -31,7 +32,7 @@ class UserController extends Controller
 
     	// 	return request('hub_challenge');
 
-    	// } 
+    	//} 
       
         $input = json_decode(file_get_contents('php://input'), true);
         $input_type = $input['entry'][0]['changes'][0]['value']['item'];
@@ -51,7 +52,7 @@ class UserController extends Controller
             $this->facebook->replyComments($comment_id , $commenter_name ,$token[0]);
             $this->facebook->autoLike($comment_id , $token[0]);
             $message = 'message';
-            $a =  $this->facebook->privateReplyWithText($page_id , $token[0] , $comment_id , $message);
+            $a =  $this->facebook->privateReplyWithText($token[0] , $comment_id , $message);
             
            Log::info($a);
          
@@ -74,53 +75,104 @@ class UserController extends Controller
         $accessToken = $this->facebook->handleCallback();
   
         $userdata = $this->facebook->getUserData($accessToken);
-      //  dd($userdata);
-
+     
             $pages = $this->facebook->getPages($accessToken);
           
-            $isUser = User::where('fb_id', $userdata['id'])->first();
+            $isUserAccount = UserAccounts::where('fb_id', $userdata['id'])->first();
 
-            if($isUser){
-                $isUser->token = $accessToken;
+            if (!Auth::check()) {
+
+            if($isUserAccount){
+
+                $isUserAccount->token = $accessToken;
  
-                $isUser->save();
+                $isUserAccount->save();
 
-                Auth::login($isUser);
+                $user = User::where('id' , $isUserAccount->user_id)->first();
+
+                Auth::login($user);
 
                 foreach($pages as $item)
                 {
                   Page::updateOrCreate(
                     ['page_id' => $item['id']],
-                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $isUser->id,] );
+                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $user->id,] );
 
                 }
 
                 return redirect('/dashboard');
 
             }else{
-                $isUser = User::create([
+
+                $user = User::create([
+                    'name' => $userdata['name'],
+                    'email' => $userdata['email'],
+                    'password' => encrypt('admin@123'),
+                    
+                ]);
+
+                $isUserAccount = UserAccounts::create([
                     'name' => $userdata['name'],
                     'email' => $userdata['email'],
                     'fb_id' => $userdata['id'],
+                    'image' => $userdata['picture'],
                     'password' => encrypt('admin@123'),
                     'token' =>  $accessToken,
+                    'user_id' => $user->id,
                 ]);
+
     
-                Auth::login($isUser);
+                Auth::login($user);
 
                 foreach($pages as $item)
                 {
                   Page::updateOrCreate(
                     ['page_id' => $item['id']],
-                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $isUser->id,] );
-
+                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $user->id,] );
                 }
 
                 return redirect('/dashboard');
         } 
 
+    }else{
+        if($isUserAccount){
+            $isUserAccount->token = $accessToken;
+
+            $isUserAccount->save();
+
+            foreach($pages as $item)
+            {
+              Page::updateOrCreate(
+                ['page_id' => $item['id']],
+                ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => Auth::user()->id] );
+
+            }
+
+            return redirect('/dashboard');
+
+        }else{
+            $isUserAccount = UserAccounts::create([
+                'name' => $userdata['name'],
+                'email' => $userdata['email'],
+                'fb_id' => $userdata['id'],
+                'image' => $userdata['picture'],
+                'password' => encrypt('admin@123'),
+                'token' =>  $accessToken,
+                'user_id' => Auth::user()->id,
+            ]);
+           
+            foreach($pages as $item)
+            {
+              Page::updateOrCreate(
+                ['page_id' => $item['id']],
+                ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => Auth::user()->id] );
+            }
+
+            return redirect('/dashboard');
+    } 
+
     }
 
 
-
+}
 }
