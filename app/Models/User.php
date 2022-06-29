@@ -8,11 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-<<<<<<< HEAD
-class User extends \TCG\Voyager\Models\User
-=======
 class User extends Authenticatable
->>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -25,17 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-<<<<<<< HEAD
-       
-=======
-<<<<<<< HEAD
         'fb_id',
-        'token',
-=======
-       
->>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
->>>>>>> 294711eb82283337406eebec0217f88805b8f426
-    ];
+        'token',  ];
 
     /**
      * The attributes that should be hidden for serialization.

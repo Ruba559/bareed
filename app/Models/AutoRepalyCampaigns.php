@@ -10,6 +10,6 @@ class AutoRepalyCampaigns extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'details' , 'type' 
+        'name', 'details' , 'type'
     ];
 }
