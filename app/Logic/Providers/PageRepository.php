@@ -16,36 +16,32 @@ class PageRepository
     public function __construct()
     {
         $this->facebook = new Facebook([
-<<<<<<< HEAD
             'app_id' => '507577797823762',
             'app_secret' => '2a15bed8a0302c84f5f3294c0d4b35e2',
-=======
-            'app_id' => '1176666739813642',
-            'app_secret' => 'ecf2febb565d9f456a63f84459da9d54',
->>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
-            'default_graph_version' => 'v14.0'
+            'default_graph_version' => 'v14.0',
+            'http_client_handler'=>'stream'
         ]);
     }
 
-    
+
     public function enable_bot($page_id='',$token='')
 	{
 
-		if($page_id=='' || $token=='') 
+		if($page_id=='' || $token=='')
 		{
-			return array('success'=>0,'error'=>$this->CI->lang->line("Something went wrong, please try again.")); 
+			return array('success'=>0,'error'=>$this->CI->lang->line("Something went wrong, please try again."));
 			exit();
 		}
-		try 
+		try
 		{
-			$params=array();			
-			$params['subscribed_fields']= array("messages","messaging_optins","messaging_postbacks","messaging_referrals","feed");			
-			$response = $this->facebook->post("{$page_id}/subscribed_apps",$params,$token);			
+			$params=array();
+			$params['subscribed_fields']= array("messages","messaging_optins","messaging_postbacks","messaging_referrals","feed");
+			$response = $this->facebook->post("{$page_id}/subscribed_apps",$params,$token);
 			$response = $response->getGraphNode()->asArray();
 
-			return $response;   	
-		} 
-		catch (Exception $e) 
+			return $response;
+		}
+		catch (Exception $e)
 		{
 			return array('success'=>0,'error'=>$e->getMessage());
 		}
@@ -64,7 +60,7 @@ class PageRepository
 		{
 			$response = $this->facebook->delete("{$page_id}/subscribed_apps",array(),$token);
 			$response = $response->getGraphNode()->asArray();
-		
+
 			return $response;
 		}
 		catch (Exception $e)
@@ -78,7 +74,7 @@ class PageRepository
     {
 
         try {
-          
+
             $response = $this->facebook->get('/'.
 <<<<<<< HEAD
               $page_id.'/feed?fields=subscribed,message',
@@ -89,7 +85,7 @@ class PageRepository
               $page_id.'/feed?fields=subscribed,message,attachments,permalink_url',
               $token
             );
-         
+
 >>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
           } catch(Facebook\Exceptions\FacebookResponseException $e) {
             echo 'Graph returned an error: ' . $e->getMessage();
@@ -98,14 +94,14 @@ class PageRepository
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
           }
-        
+
 <<<<<<< HEAD
             $graphNode = $response->getGraphEdge();
             dd($graphNode);
-          return $graphNode;   
+          return $graphNode;
 =======
             $graphNode = $response->getGraphEdge()->asArray();
-            
+
           return $graphNode;
 >>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
     }
@@ -141,7 +137,7 @@ class PageRepository
         try {
             return $this->postData($accessToken, "$accountId/feed", $data);
         } catch (\Exception $exception) {
-            
+
             return false;
         }
     }

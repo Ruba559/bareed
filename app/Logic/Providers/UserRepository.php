@@ -16,18 +16,14 @@ class UserRepository
     public function __construct()
     {
         $this->facebook = new Facebook([
-<<<<<<< HEAD
             'app_id' => '507577797823762',
             'app_secret' => '2a15bed8a0302c84f5f3294c0d4b35e2',
-=======
-            'app_id' => '1176666739813642',
-            'app_secret' => 'ecf2febb565d9f456a63f84459da9d54',
->>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
-            'default_graph_version' => 'v14.0'
+            'default_graph_version' => 'v14.0',
+            'http_client_handler'=>'stream'
         ]);
     }
 
-    
+
     public function redirectTo()
     {
         $helper = $this->facebook->getRedirectLoginHelper();
@@ -49,28 +45,28 @@ class UserRepository
         return $helper->getLoginUrl($redirectUri, $permissions);
     }
 
-    
+
     public function getUserData($accessToken)
     {
         $helper = $this->facebook->get("me?fields=id,name,email,picture",$accessToken);
         $helper = $helper->getGraphNode();
 
         return $helper;
-       
+
     }
 
 
     public function handleCallback()
     {
         $helper = $this->facebook->getRedirectLoginHelper();
-        
+
         if (request('state')) {
             $helper->getPersistentDataHandler()->set('state', request('state'));
         }
 
         try {
             $accessToken = $helper->getAccessToken();
-            
+
         } catch(FacebookResponseException $e) {
             throw new Exception("Graph returned an error: {$e->getMessage()}");
         } catch(FacebookSDKException $e) {
@@ -85,29 +81,29 @@ class UserRepository
             try {
                 $oAuth2Client = $this->facebook->getOAuth2Client();
                 $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-               
+
             } catch (FacebookSDKException $e) {
                 throw new Exception("Error getting a long-lived access token: {$e->getMessage()}");
             }
         }
-        
+
         return $accessToken->getValue();
-        
+
     }
 
-    
+
     public function replyComments($comment_id , $commenter_name, $token)
     {
 
         try {
 
-            $params['message']='thank you '.$commenter_name;	
+            $params['message']='thank you '.$commenter_name;
 
             $response = $this->facebook->post('/'.
               $comment_id.'/comments?',$params,
               $token
             );
-           
+
           } catch(Facebook\Exceptions\FacebookResponseException $e) {
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
@@ -115,11 +111,11 @@ class UserRepository
             echo 'Facebook SDK returned an error: ' . $e->getMessage();
             exit;
           }
-        
+
           $response->getGraphNode()->asArray();
-            
+
           return $response;
-       
+
     }
 
 
@@ -132,8 +128,8 @@ class UserRepository
         $params['message']= $message;
         $params['recipient']= $comment_id;
 
-       
-        $response = $this->facebook->post("me/messages",$params,$token);   
+
+        $response = $this->facebook->post("me/messages",$params,$token);
 
 		return $response->getGraphNode()->asArray();
 	}
@@ -144,8 +140,8 @@ class UserRepository
         $params['message']='thank you ';
         $params['recipient']= $post_id;
 
-       
-        $response = $this->facebook->post("{$page_id}/messages",$params,$token);   
+
+        $response = $this->facebook->post("{$page_id}/messages",$params,$token);
 
 		return $response->getGraphNode()->asArray();
 	}
@@ -174,5 +170,5 @@ class UserRepository
             ];
         }, $pages);
     }
-  
+
 }
