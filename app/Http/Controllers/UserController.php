@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 use App\Logic\Providers\UserRepository;
 use App\Models\User;
 use App\Models\Page;
+<<<<<<< HEAD
 use App\Models\UserAccounts;
+=======
+<<<<<<< HEAD
+=======
+use App\Models\UserAccounts;
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 use Validator;
 use Exception;
 use Auth;
@@ -30,12 +37,23 @@ class UserController extends Controller
     {
         
 <<<<<<< HEAD
+<<<<<<< HEAD
          $local_token = 'facebook_messenger_api';
     	 $hub_verify_token = request('hub_verify_token');
+=======
+        // $local_token = 'facebook_messenger_api';
+    	// $hub_verify_token = request('hub_verify_token');
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
     	 if ($hub_verify_token === $local_token) {
 
+<<<<<<< HEAD
     	 	return request('hub_challenge');
+=======
+    	// 	return request('hub_challenge');
+
+    	// } 
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 =======
         $local_token = 'facebook_messenger_api';
     	$hub_verify_token = request('hub_verify_token');
@@ -46,6 +64,10 @@ class UserController extends Controller
 >>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 
     	} 
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
       
         $input = json_decode(file_get_contents('php://input'), true);
         $input_type = $input['entry'][0]['changes'][0]['value']['item'];
@@ -65,7 +87,15 @@ class UserController extends Controller
             $this->facebook->replyComments($comment_id , $commenter_name ,$token[0]);
             $this->facebook->autoLike($comment_id , $token[0]);
             $message = 'message';
+<<<<<<< HEAD
             $a =  $this->facebook->privateReplyWithText($token[0] , $comment_id , $message);
+=======
+<<<<<<< HEAD
+            $a =  $this->facebook->privateReplyWithText($page_id , $token[0] , $comment_id , $message);
+=======
+            $a =  $this->facebook->privateReplyWithText($token[0] , $comment_id , $message);
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
             
            Log::info($a);
          
@@ -88,6 +118,23 @@ class UserController extends Controller
         $accessToken = $this->facebook->handleCallback();
   
         $userdata = $this->facebook->getUserData($accessToken);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      //  dd($userdata);
+
+            $pages = $this->facebook->getPages($accessToken);
+          
+            $isUser = User::where('fb_id', $userdata['id'])->first();
+
+            if($isUser){
+                $isUser->token = $accessToken;
+ 
+                $isUser->save();
+
+                Auth::login($isUser);
+=======
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
      
             $pages = $this->facebook->getPages($accessToken);
           
@@ -104,18 +151,44 @@ class UserController extends Controller
                 $user = User::where('id' , $isUserAccount->user_id)->first();
 
                 Auth::login($user);
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
                 foreach($pages as $item)
                 {
                   Page::updateOrCreate(
                     ['page_id' => $item['id']],
+<<<<<<< HEAD
                     ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $user->id,] );
+=======
+<<<<<<< HEAD
+                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $isUser->id,] );
+=======
+                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $user->id,] );
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
                 }
 
                 return redirect('/dashboard');
 
             }else{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                $isUser = User::create([
+                    'name' => $userdata['name'],
+                    'email' => $userdata['email'],
+                    'fb_id' => $userdata['id'],
+                    'password' => encrypt('admin@123'),
+                    'token' =>  $accessToken,
+                ]);
+    
+                Auth::login($isUser);
+=======
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
                 $user = User::create([
                     'name' => $userdata['name'],
@@ -145,17 +218,39 @@ class UserController extends Controller
 
     
                 Auth::login($user);
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
                 foreach($pages as $item)
                 {
                   Page::updateOrCreate(
                     ['page_id' => $item['id']],
+<<<<<<< HEAD
                     ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $user->id,] );
+=======
+<<<<<<< HEAD
+                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $isUser->id,] );
+
+=======
+                    ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => $user->id,] );
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
                 }
 
                 return redirect('/dashboard');
         } 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    }
+
+
+
+=======
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
     }else{
         if($isUserAccount){
             $isUserAccount->token = $accessToken;
@@ -201,4 +296,8 @@ class UserController extends Controller
 
 
 }
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 }

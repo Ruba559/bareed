@@ -32,6 +32,18 @@ class PageController extends Controller
     }
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    public function enable($page_id , $token)
+    {
+        $enable_page = $this->facebook->enable_bot($page_id ,$token);
+    
+       if($enable_page['success'] == 'true')
+       {
+         $page = Page::where('page_id', $page_id)->first();
+=======
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
     public function enable(Request $request)
     {
      
@@ -40,6 +52,10 @@ class PageController extends Controller
        if($enable_page['success'] == 'true')
        {
          $page = Page::where('page_id', $request->page_id)->first();
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
         if($page){
 
@@ -48,7 +64,15 @@ class PageController extends Controller
           $page->save();
        }
       }
+<<<<<<< HEAD
        return redirect('/dashboard');
+=======
+<<<<<<< HEAD
+       return redirect('pages');
+=======
+       return redirect('/dashboard');
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
     }
 
@@ -68,7 +92,15 @@ class PageController extends Controller
           $page->save();
        }
       }
+<<<<<<< HEAD
        return redirect('/dashboard');
+=======
+<<<<<<< HEAD
+       return redirect('pages');
+=======
+       return redirect('/dashboard');
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
     }
 
@@ -118,6 +150,10 @@ class PageController extends Controller
     ]);
        return view('form');
      
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
     }
 >>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 

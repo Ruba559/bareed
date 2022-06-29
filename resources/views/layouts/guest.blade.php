@@ -29,8 +29,12 @@
         <!-- jQuery library -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
          <link rel="stylesheet" href="{{asset('css/main.css')}}">
         <script src="{{asset('js/main.js')}}"></script> 
+=======
+        <link rel="stylesheet" href="{{asset('css/main.css')}}">
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 =======
         <link rel="stylesheet" href="https://b671-94-47-144-252.eu.ngrok.io/css/main.css">
 >>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b

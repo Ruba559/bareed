@@ -80,6 +80,15 @@ html,body{
 .green-bg{
     background-color: #12D1B7;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+.warning-bg{
+    background-color: #f8aa44;
+}
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 .red-bg{
     background-color: #d45c5c;
 }
@@ -195,6 +204,17 @@ html,body{
 .page-row img{
     width: 40px;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.page-row .caption{
+    text-align: right;
+    float: inline-start;
+    margin-right: auto;
+}
+
+=======
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 .page-row .caption p{
     text-align: right;
     float: inline-start;
@@ -203,6 +223,10 @@ html,body{
 .page-row .btn{
     font-size: small;
 }
+<<<<<<< HEAD
+=======
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
 
 
 @media only screen and (max-width: 600px) {
@@ -217,9 +241,20 @@ html,body{
     .page-row img{
         width: 50px;
     }
+<<<<<<< HEAD
     .page-row .caption p{
         text-align: right;
 
+=======
+<<<<<<< HEAD
+    .page-row .caption{
+        text-align: center;
+=======
+    .page-row .caption p{
+        text-align: right;
+
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
     }
     .page-row .caption{
         font-size: medium;
@@ -240,7 +275,15 @@ html,body{
     .page-row img{
         max-width:50px !important;
     }
+<<<<<<< HEAD
     .page-row .caption p{
+=======
+<<<<<<< HEAD
+    .page-row .caption{
+=======
+    .page-row .caption p{
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
+>>>>>>> 294711eb82283337406eebec0217f88805b8f426
         text-align: center;
     }
 }
