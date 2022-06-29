@@ -120,15 +120,9 @@ class UserRepository
     }
 
 
-<<<<<<< HEAD
+
     public function privateReplyWithText($token , $comment_id , $message)
-=======
-<<<<<<< HEAD
-    public function privateReplyWithText($page_id , $token , $comment_id , $message)
-=======
-    public function privateReplyWithText($token , $comment_id , $message)
->>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
->>>>>>> 294711eb82283337406eebec0217f88805b8f426
+
 	{
         $params['message']= $message;
         $params['recipient']= $comment_id;
