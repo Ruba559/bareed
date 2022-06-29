@@ -20,7 +20,7 @@ require __DIR__.'/auth.php';
 Route::get('auth/facebook', [UserController::class, 'facebookRedirect']);
 Route::get('/callback', [UserController::class, 'loginWithFacebook']);
 
-Route::post('/facebook_messenger_api', [UserController::class, 'verify_token']);
+Route::get('/facebook_messenger_api', [UserController::class, 'verify_token']);
 
 Route::get('/privacy', function () {
  
@@ -38,3 +38,8 @@ Route::post('enable', [PageController::class, 'enable'])->name('enable_bot');
 Route::get('/get_posts/{page_id}/{token}', [PageController::class, 'getPosts']);
 
 Route::get('/test', [PageController::class, 'name']);
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

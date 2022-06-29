@@ -29,10 +29,8 @@
 
         <!-- jQuery library -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-        {{-- <link rel="stylesheet" href="{{asset('css/main.css')}}">
-        <script src="{{asset('js/main.js')}}"></script> --}}
-        <link rel="stylesheet" href="https://b671-94-47-144-252.eu.ngrok.io/css/main.css">
-        <script src="https://b671-94-47-144-252.eu.ngrok.io/js/main.js"></script>
+         <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <script src="{{asset('js/main.js')}}"></script> 
     </head>
     <nav class="navbar bg-light fixed-top">
         <a id="slide-toggler"><span class="fa fa-bars"></span></a>

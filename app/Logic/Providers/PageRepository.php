@@ -16,9 +16,10 @@ class PageRepository
     public function __construct()
     {
         $this->facebook = new Facebook([
-            'app_id' => '507577797823762',
-            'app_secret' => '55caeae805d2e41c83bd6d1e4a050307',
+            'app_id' => '203619158334876',
+            'app_secret' => 'ff52cbeea32631900d9ef307ee710c7b',
             'default_graph_version' => 'v14.0'
+,'http_client_handler' => 'stream'
         ]);
     }
 

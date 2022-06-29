@@ -25,14 +25,14 @@ class UserController extends Controller
     public function verify_token()
     {
         
-        // $local_token = 'facebook_messenger_api';
-    	// $hub_verify_token = request('hub_verify_token');
+         $local_token = 'facebook_messenger_api';
+    	 $hub_verify_token = request('hub_verify_token');
 
-    	// if ($hub_verify_token === $local_token) {
+    	 if ($hub_verify_token === $local_token) {
 
-    	// 	return request('hub_challenge');
+    	 	return request('hub_challenge');
 
-    	//} 
+    	} 
       
         $input = json_decode(file_get_contents('php://input'), true);
         $input_type = $input['entry'][0]['changes'][0]['value']['item'];

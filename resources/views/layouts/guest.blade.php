@@ -28,7 +28,8 @@
 
         <!-- jQuery library -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-        <link rel="stylesheet" href="{{asset('css/main.css')}}">
+         <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <script src="{{asset('js/main.js')}}"></script> 
     </head>
     <body dir="rtl">
         @yield('body')
