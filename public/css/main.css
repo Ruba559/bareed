@@ -80,6 +80,12 @@ html,body{
 .green-bg{
     background-color: #12D1B7;
 }
+<<<<<<< HEAD
+=======
+.warning-bg{
+    background-color: #f8aa44;
+}
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 .red-bg{
     background-color: #d45c5c;
 }
@@ -195,12 +201,23 @@ html,body{
 .page-row img{
     width: 40px;
 }
+<<<<<<< HEAD
 .page-row .caption{
     text-align: right;
     float: inline-start;
     margin-right: auto;
 }
 
+=======
+.page-row .caption p{
+    text-align: right;
+    float: inline-start;
+    margin-left: auto;
+}
+.page-row .btn{
+    font-size: small;
+}
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 
 
 @media only screen and (max-width: 600px) {
@@ -215,8 +232,14 @@ html,body{
     .page-row img{
         width: 50px;
     }
+<<<<<<< HEAD
     .page-row .caption{
         text-align: center;
+=======
+    .page-row .caption p{
+        text-align: right;
+
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
     }
     .page-row .caption{
         font-size: medium;
@@ -237,7 +260,11 @@ html,body{
     .page-row img{
         max-width:50px !important;
     }
+<<<<<<< HEAD
     .page-row .caption{
+=======
+    .page-row .caption p{
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
         text-align: center;
     }
 }

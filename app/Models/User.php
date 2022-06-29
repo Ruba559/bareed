@@ -21,8 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'fb_id',
         'token',
+=======
+       
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
     ];
 
     /**

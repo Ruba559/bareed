@@ -22,6 +22,7 @@
         </style>
     </head>
     <body>
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Navbar</a>
@@ -50,6 +51,24 @@
           <div class="container p-5">
             @foreach ($pages as $item)
                 @include('components.pagerow',['page'=>$item])
+=======
+    
+
+          <div class="container p-5">
+            @foreach ($posts as $item)
+            <div class="row bg-light justify-content-center align-items-center radius-80 mb-3 page-row " >
+            <div class="col-md-6 col-12">
+                <div class="d-block  caption">
+                    <p class="blue-text my-1"> {{ $item['message'] }}</p>
+                    <form method="post" action="index_form_reply">
+                        @csrf
+                    <input type="hidden" name="post_id" value="{{ $item['id'] }}">
+                    <button type="submit">reply</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
             @endforeach
           </div>
        

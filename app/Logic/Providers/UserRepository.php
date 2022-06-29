@@ -16,8 +16,13 @@ class UserRepository
     public function __construct()
     {
         $this->facebook = new Facebook([
+<<<<<<< HEAD
             'app_id' => '507577797823762',
             'app_secret' => '2a15bed8a0302c84f5f3294c0d4b35e2',
+=======
+            'app_id' => '1176666739813642',
+            'app_secret' => 'ecf2febb565d9f456a63f84459da9d54',
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
             'default_graph_version' => 'v14.0'
         ]);
     }
@@ -118,7 +123,11 @@ class UserRepository
     }
 
 
+<<<<<<< HEAD
     public function privateReplyWithText($page_id , $token , $comment_id , $message)
+=======
+    public function privateReplyWithText($token , $comment_id , $message)
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 	{
         $params['message']= $message;
         $params['recipient']= $comment_id;
