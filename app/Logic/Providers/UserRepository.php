@@ -16,24 +16,12 @@ class UserRepository
     public function __construct()
     {
         $this->facebook = new Facebook([
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             'app_id' => '203619158334876',
             'app_secret' => 'ff52cbeea32631900d9ef307ee710c7b',
             'default_graph_version' => 'v14.0'
 ,'http_client_handler' => 'stream'
-=======
-            'app_id' => '1176666739813642',
-            'app_secret' => 'ecf2febb565d9f456a63f84459da9d54',
-            'default_graph_version' => 'v14.0'
->>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
-=======
-            'app_id' => '507577797823762',
-            'app_secret' => '2a15bed8a0302c84f5f3294c0d4b35e2',
-            'default_graph_version' => 'v14.0',
-            'http_client_handler'=>'stream'
->>>>>>> 294711eb82283337406eebec0217f88805b8f426
-        ]);
+ ]);
     }
 
 
