@@ -16,10 +16,16 @@ class PageRepository
     public function __construct()
     {
         $this->facebook = new Facebook([
+<<<<<<< HEAD
             'app_id' => '203619158334876',
             'app_secret' => 'ff52cbeea32631900d9ef307ee710c7b',
             'default_graph_version' => 'v14.0'
 ,'http_client_handler' => 'stream'
+=======
+            'app_id' => '1176666739813642',
+            'app_secret' => 'ecf2febb565d9f456a63f84459da9d54',
+            'default_graph_version' => 'v14.0'
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
         ]);
     }
 
@@ -76,10 +82,17 @@ class PageRepository
         try {
           
             $response = $this->facebook->get('/'.
+<<<<<<< HEAD
               $page_id.'/feed?fields=subscribed,message',
               $token
             );
            dd($response);
+=======
+              $page_id.'/feed?fields=subscribed,message,attachments,permalink_url',
+              $token
+            );
+         
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
           } catch(Facebook\Exceptions\FacebookResponseException $e) {
             echo 'Graph returned an error: ' . $e->getMessage();
             exit;
@@ -88,9 +101,15 @@ class PageRepository
             exit;
           }
         
+<<<<<<< HEAD
             $graphNode = $response->getGraphEdge();
             dd($graphNode);
           return $graphNode;   
+=======
+            $graphNode = $response->getGraphEdge()->asArray();
+            
+          return $graphNode;
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
     }
 
 

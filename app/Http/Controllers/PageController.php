@@ -8,6 +8,10 @@ use App\Logic\Providers\PageRepository;
 use Validator;
 use Exception;
 use Auth;
+<<<<<<< HEAD
+=======
+use App\Models\AutoRepalyCampaigns;
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 
 class PageController extends Controller
 {
@@ -69,6 +73,7 @@ class PageController extends Controller
     }
 
 
+<<<<<<< HEAD
     public function getPosts($page_id , $token)
     {
         $enable_page = $this->facebook->getPosts($page_id ,$token);
@@ -80,6 +85,41 @@ class PageController extends Controller
 
 
 
+=======
+    public function getPosts(Request $request)
+    {
+        $posts = $this->facebook->getPosts($request->page_id ,$request->token);
+    
+       return view('pages' , ['posts' => $posts]);
+     
+    }
+
+
+    public function indexFormReply(Request $request)
+    {
+    //  return $request->post_id;
+    
+       return view('form');
+     
+    }
+
+    public function postFormReply(Request $request)
+    {
+
+      $data = $request->only('comment', 'like', 'message_reply');
+     
+      
+      $data = json_encode($request->except('_method', '_token' , 'name' , 'type'));
+    
+       AutoRepalyCampaigns::create([
+        'type' => '1',
+        'details' =>$data,
+        'name' => $request->name,
+    ]);
+       return view('form');
+     
+    }
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 
 
 }

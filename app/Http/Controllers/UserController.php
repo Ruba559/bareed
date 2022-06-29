@@ -11,6 +11,10 @@ use Validator;
 use Exception;
 use Auth;
 use Illuminate\Support\Facades\Log;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Hash;
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 
 class UserController extends Controller
 {
@@ -25,12 +29,21 @@ class UserController extends Controller
     public function verify_token()
     {
         
+<<<<<<< HEAD
          $local_token = 'facebook_messenger_api';
     	 $hub_verify_token = request('hub_verify_token');
 
     	 if ($hub_verify_token === $local_token) {
 
     	 	return request('hub_challenge');
+=======
+        $local_token = 'facebook_messenger_api';
+    	$hub_verify_token = request('hub_verify_token');
+
+    	if ($hub_verify_token === $local_token) {
+
+    		return request('hub_challenge');
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
 
     	} 
       
@@ -107,7 +120,11 @@ class UserController extends Controller
                 $user = User::create([
                     'name' => $userdata['name'],
                     'email' => $userdata['email'],
+<<<<<<< HEAD
                     'password' => encrypt('admin@123'),
+=======
+                    'password' => Hash::make('password'),
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
                     
                 ]);
 
@@ -115,8 +132,13 @@ class UserController extends Controller
                     'name' => $userdata['name'],
                     'email' => $userdata['email'],
                     'fb_id' => $userdata['id'],
+<<<<<<< HEAD
                     'image' => $userdata['picture'],
                     'password' => encrypt('admin@123'),
+=======
+                    'image' => '$userdata['picture']',
+                    'password' =>  Hash::make('password'),
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
                     'token' =>  $accessToken,
                     'user_id' => $user->id,
                 ]);
@@ -156,7 +178,11 @@ class UserController extends Controller
                 'email' => $userdata['email'],
                 'fb_id' => $userdata['id'],
                 'image' => $userdata['picture'],
+<<<<<<< HEAD
                 'password' => encrypt('admin@123'),
+=======
+                'password' =>Hash::make('password'),
+>>>>>>> 02b5ef90dbc5d6998f22015d5ae8bc0d4ffc088b
                 'token' =>  $accessToken,
                 'user_id' => Auth::user()->id,
             ]);
