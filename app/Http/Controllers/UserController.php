@@ -176,43 +176,6 @@ class UserController extends Controller
 
 
 
-    }else{
-        if($isUserAccount){
-            $isUserAccount->token = $accessToken;
-
-            $isUserAccount->save();
-
-            foreach($pages as $item)
-            {
-              Page::updateOrCreate(
-                ['page_id' => $item['id']],
-                ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => Auth::user()->id] );
-
-            }
-
-            return redirect('/dashboard');
-
-        }else{
-            $isUserAccount = UserAccounts::create([
-                'name' => $userdata['name'],
-                'email' => $userdata['email'],
-                'fb_id' => $userdata['id'],
-                'image' => $userdata['picture'],
-                'password' =>Hash::make('password'),
-                'token' =>  $accessToken,
-                'user_id' => Auth::user()->id,
-            ]);
-
-            foreach($pages as $item)
-            {
-              Page::updateOrCreate(
-                ['page_id' => $item['id']],
-                ['name' =>  $item['name'] , 'token' => $item['access_token'] , 'status' => '0', 'image' => $item['image'], 'user_id' => Auth::user()->id] );
-            }
-
-            return redirect('/dashboard');
-    }
-
     }
 
 
